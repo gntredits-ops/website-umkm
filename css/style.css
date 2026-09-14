@@ -37,3 +37,13 @@ button {
     border: 0;
     border-radius: 999px;
 }
+
+.promo-text {
+    display: none;
+    margin-top: 15px;
+    padding: 15px 20px;
+    background: #ffd166;
+    color: #2f2118;
+    border-radius: 12px;
+    font-weight: bold;
+}
