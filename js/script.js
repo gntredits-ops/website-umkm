@@ -1,4 +1,4 @@
-const promoButton = document.querySelector('.promo-button');
+const promoButton = document.querySelector('#promoButton');
 const promoText = document.querySelector('.promo-text');
 
 promoButton.addEventListener('click', () => {
