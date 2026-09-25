@@ -2,7 +2,11 @@ const promoButton = document.querySelector('#promoButton');
 const promoText = document.querySelector('.promo-text');
 
 promoButton.addEventListener('click', () => {
-    promoText.style.display = 'block';
-    promoButton.textContent = "Beli 2 Gratis 1, khusus hari ini!";
-    console.log("Terima kasih sudah mampir ke Kopi Nusa!");
+    if (promoText.style.display === 'block') {
+        promoText.style.display = 'none';
+        promoButton.textContent = 'Lihat promo hari ini';
+    } else {
+        promoText.style.display = 'block';
+        promoButton.textContent = 'Tutup promo';
+    }
 });

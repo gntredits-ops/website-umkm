@@ -16,36 +16,57 @@ body {
     color: white;
     background: #6f3b1f;
     border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(111, 59, 31, 0.2);
 }
 
-.eyebrow {
-    margin: 0 0 8px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
-.products {
-    padding-left: 1.2rem;
-}
-
-button {
-    padding: 12px 18px;
-    color:#2f2118;
+.hero button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    color: #2f2118;
     font-weight: 700;
+    font-size: 0.95rem;
     cursor: pointer;
-    background: #ffd166;
-    border: 0;
+    background: linear-gradient(135deg, #ffd166, #ffb703);
+    border: none;
     border-radius: 999px;
-
+    box-shadow: 0 4px 15px rgba(255, 209, 102, 0.4);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+.hero button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(255, 209, 102, 0.5);
+}
+
+.hero button:active {
+    transform: translateY(1px) scale(0.98);
+}
+
 .promo-text {
     display: none;
-    margin-top: 15px;
-    padding: 15px 20px;
-    background: #ffd166;
-    color: #2f2118;
+    margin-top: 18px;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    border-left: 4px solid #ffd166;
     border-radius: 12px;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 1rem;
+    animation: slideDown 0.35s ease forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .skip-link {
@@ -127,3 +148,32 @@ table { width: 100%; border-collapse: collapse; }
 caption { margin-bottom: 8px; font-weight: 700; text-align: left; }
 th,
 td { padding: 10px; text-align: left; border: 1px solid #dccbbc; }
+.field { margin-bottom: 16px; }
+
+.field label { font-weight: 600; color: #4b2715; }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dccbbc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+fieldset {
+    border: 1px solid #dccbbc;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+button {
+    width: 100%;
+    background: #6f3b1f;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+}
