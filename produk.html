@@ -6,19 +6,30 @@
     <title>Produk Kopi Nusa - Website UMKM</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
+  <script src="js/app.js" defer></script>
   <body>
     <a class="skip-link" href="#konten">Lewati ke konten utama</a>
     <header class="site-header">
-      <nav class="nav" aria-label="Navigasi utama">
-        <a class="brand" href="index.html">Kopi Nusa</a>
-        <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="tentang.html">Tentang Kami</a></li>
-          <li><a aria-current="page" href="produk.html">Produk</a></li>
-          <li><a href="galeri.html">Galeri</a></li>
-          <li><a href="kontak.html">Kontak</a></li>
-        </ul>
-      </nav>
+     <nav class="nav" aria-label="Navigasi utama">
+    <a class="brand" href="index.html">Kopi Nusa</a>
+
+    <button class="nav-toggle" id="navToggle"
+        type="button"
+        aria-label="Buka menu navigasi"
+        aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <ul id="navMenu">
+        <li><a href="index.html">Beranda</a></li>
+       <li><a aria-current="page" href="tentang.html">Tentang Kami</a></li>
+        <li><a href="produk.html">Produk</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+</nav>
     </header>
     <main id="konten" class="page">
       <h1>Produk Kopi Nusa</h1>
@@ -70,6 +81,14 @@
       </div>
     </article>
   </div>
+</section>
+<section class="section" aria-labelledby="produk-dinamis-title">
+  <div class="section-header">
+    <p class="eyebrow">Data JavaScript</p>
+    <h2 id="produk-dinamis-title">Produk dari Data Lokal</h2>
+    <p id="produk-ringkasan">Data produk akan dimuat melalui JavaScript.</p>
+  </div>
+  <div id="produk-dinamis" class="js-product-grid"></div>
 </section>
       <section aria-labelledby="kategori-title">
   <h2 id="kategori-title">Kategori Produk</h2>

@@ -5,21 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kontak Kopi Nusa - Website UMKM</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/form.js" defer></script>
   </head>
+    <script src="js/app.js" defer></script>
   <body>
     <a class="skip-link" href="#konten">Lewati ke konten utama</a>
     <header class="site-header">
-      <nav class="nav" aria-label="Navigasi utama">
-        <a class="brand" href="index.html">Kopi Nusa</a>
-        <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="tentang.html">Tentang Kami</a></li>
-          <li><a href="produk.html">Produk</a></li>
-          <li><a href="galeri.html">Galeri</a></li>
-          <li><a aria-current="page" href="kontak.html">Kontak</a></li>
-        </ul>
-      </nav>
+     <nav class="nav" aria-label="Navigasi utama">
+    <a class="brand" href="index.html">Kopi Nusa</a>
+
+    <button class="nav-toggle" id="navToggle"
+        type="button"
+        aria-label="Buka menu navigasi"
+        aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <ul id="navMenu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang Kami</a></li>
+        <li><a href="produk.html">Produk</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a aria-current="page" href="kontak.html">Kontak</a></li>
+    </ul>
+</nav>
     </header>
     <main id="konten" class="page">
       <h1>Kontak Kopi Nusa</h1>

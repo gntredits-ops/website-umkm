@@ -400,3 +400,96 @@ audio {
   display: block;
   border-radius: var(--radius-sm);
 }
+
+.js-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-4);
+}
+
+.js-product-card {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.stock-badge {
+  display: inline-flex;
+  margin-block-start: var(--space-2);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.stock-badge.warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.stock-badge.empty {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Hamburger Menu */
+.nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.nav-toggle {
+    display: none;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background: var(--color-primary);
+    border-radius: 3px;
+}
+
+/* Tampilan HP */
+@media (max-width: 59.99rem) {
+    .nav {
+        flex-wrap: wrap;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: var(--space-3);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+    }
+
+    .nav ul.active {
+        display: flex;
+    }
+}
+
