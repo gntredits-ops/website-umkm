@@ -78,6 +78,8 @@ function renderProduk() {
   ringkasan.textContent = `${jumlahTersedia} produk tersedia dari ${produkUmkm.length} data.`;
 }
 
+document.addEventListener("DOMContentLoaded", renderProduk);
+
 document.addEventListener("DOMContentLoaded", function() {
     const navToggle = document.getElementById("navToggle");
     const navMenu = document.getElementById("navMenu");
