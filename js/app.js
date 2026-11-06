@@ -75,3 +75,32 @@ function renderProduk() {
 }
 
 document.addEventListener("DOMContentLoaded", renderProduk);
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const navToggle = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (navToggle && navMenu) {
+
+        navToggle.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+
+            const menuTerbuka =
+                navMenu.classList.contains("active");
+
+            navToggle.setAttribute(
+                "aria-expanded",
+                menuTerbuka ? "true" : "false"
+            );
+        });
+
+        navMenu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navMenu.classList.remove("active");
+                navToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+    }
+
+});

@@ -452,47 +452,72 @@ audio {
 
 .nav-toggle {
     display: none;
-    padding: 8px;
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
+    padding: 8px;
 }
 
 .nav-toggle span {
     display: block;
     width: 25px;
     height: 3px;
+    background: #fff;
     margin: 5px 0;
-    background: var(--color-primary);
     border-radius: 3px;
 }
 
-/* Tampilan HP */
+/* PERBAIKAN MENU HAMBURGER */
 @media (max-width: 59.99rem) {
+
     .nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         flex-wrap: wrap;
+        position: relative;
+    }
+
+    .nav .brand {
+        margin-right: auto;
     }
 
     .nav-toggle {
+        display: block !important;
+        order: 2;
+        cursor: pointer;
+        background: #542d1b;
+        border: none;
+        padding: 8px;
+        border-radius: 7px;
+    }
+
+    .nav-toggle span {
         display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px 0;
+        background: white;
     }
 
     .nav ul {
-        display: none;
+        display: none !important;
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-        padding: var(--space-3);
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-md);
+        flex-basis: 100%;
+        margin-top: 12px;
+        padding: 15px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
     }
 
     .nav ul.active {
-        display: flex;
+        display: flex !important;
     }
 }
-
 .stock-badge.warning {
   background: #fef3c7;
   color: #92400e;
