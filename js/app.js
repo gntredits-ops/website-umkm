@@ -3,10 +3,23 @@
 console.log("P10 JavaScript aktif");
 
 const produkUmkm = [
+  
   { nama: "Kopi Tubruk Signature", kategori: "Kopi", harga: 18000, stok: 12, unggulan: true },
   { nama: "Cold Brew Aren", kategori: "Kopi", harga: 22000, stok: 0, unggulan: false },
   { nama: "Kopi Susu Nusa", kategori: "Kopi", harga: 20000, stok: 8, unggulan: false },
   { nama: "Kopi Matcha Latte", kategori: "Kopi", harga: 25000, stok: 2, unggulan: false },
+
+  { nama: "Paket Seduh Rumahan", kategori: "Bundling", harga: 85000, stok: 10, unggulan: false },
+  { nama: "Paket Kantor Mingguan", kategori: "Bundling", harga: 150000, stok: 4, unggulan: false },
+  { nama: "Paket Tester Pelanggan Baru", kategori: "Bundling", harga: 45000, stok: 15, unggulan: false },
+
+  { nama: "Tumbler Kopi Nusa 350 ml", kategori: "Aksesori", harga: 75000, stok: 9, unggulan: false },
+  { nama: "Gelas Keramik Kopi Nusa", kategori: "Aksesori", harga: 35000, stok: 0, unggulan: false },
+  { nama: "Totebag Kopi Nusa", kategori: "Aksesori", harga: 40000, stok: 3, unggulan: false },
+
+  { nama: "Roti Bakar Cokelat Keju", kategori: "Makanan", harga: 15000, stok: 20, unggulan: false },
+  { nama: "Pisang Goreng Madu", kategori: "Makanan", harga: 12000, stok: 5, unggulan: false },
+  { nama: "Croissant Butter", kategori: "Makanan", harga: 18000, stok: 0, unggulan: false },
 ];
 
 function formatRupiah(nilai) {
@@ -52,26 +65,96 @@ produkUmkm.forEach((produk) => {
 });
 
 function renderProduk() {
-  const grid = document.querySelector("#produk-dinamis");
-  const ringkasan = document.querySelector("#produk-ringkasan");
-  const unggulan = document.querySelector("#produk-unggulan");
 
-  if (!grid || !ringkasan || !unggulan) {
-    console.warn("Target render produk belum lengkap.");
+const produkGrid = document.querySelector("#produk-grid");
+const produkStatus = document.querySelector("#produk-status");
+const tombolFilter = document.querySelectorAll("[data-filter]");
+
+function buatElemenProduk(produk) {
+  const card = document.createElement("article");
+  card.classList.add("product-card");
+
+  const title = document.createElement("h3");
+  title.textContent = produk.nama;
+
+  const category = document.createElement("p");
+  category.classList.add("category-note");
+  category.textContent = produk.kategori;
+
+  const price = document.createElement("p");
+  price.classList.add("price");
+  price.textContent = formatRupiah(produk.harga);
+
+  const stock = document.createElement("span");
+  const status = statusStok(produk.stok);
+
+  stock.classList.add("stock-badge");
+
+  if (status.className) {
+    stock.classList.add(status.className);
+  }
+
+  stock.textContent = status.label;
+
+  card.append(title, category, price, stock);
+
+  return card;
+}
+
+function buatEmptyState(kategori) {
+  const empty = document.createElement("p");
+
+  empty.classList.add("empty-state");
+  empty.textContent =
+    `Belum ada produk pada kategori ${kategori}.`;
+
+  return empty;
+}
+
+function renderProduk(kategoriAktif = "Semua") {
+  if (!produkGrid || !produkStatus) {
+    console.warn("Target render produk tidak ditemukan.");
     return;
   }
 
-  const produkTersedia = produkUmkm.filter((produk) => produk.stok > 0);
-  const produkUnggulan = produkUmkm.find((produk) => produk.unggulan === true);
-  const markupProduk = produkTersedia.map(buatKartuProduk).join("");
+  const produkTampil = kategoriAktif === "Semua"
+    ? produkUmkm
+    : produkUmkm.filter(
+        (produk) => produk.kategori === kategoriAktif
+      );
 
-  grid.innerHTML = markupProduk;
-  ringkasan.textContent = `${produkTersedia.length} produk tersedia dari ${produkUmkm.length} data.`;
-  unggulan.textContent = produkUnggulan
-    ? `Produk unggulan: ${produkUnggulan.nama}`
-    : "Belum ada produk unggulan.";
+  produkGrid.replaceChildren();
 
-  console.table(produkUmkm);
+  if (produkTampil.length === 0) {
+    produkGrid.append(buatEmptyState(kategoriAktif));
+    produkStatus.textContent = "0 produk ditemukan.";
+    return;
+  }
+
+  produkTampil.forEach((produk) => {
+    produkGrid.append(buatElemenProduk(produk));
+  });
+
+  produkStatus.textContent =
+    `${produkTampil.length} produk ditampilkan.`;
+}
+
+renderProduk();
+
+tombolFilter.forEach((tombol) => {
+  tombol.addEventListener("click", (event) => {
+    const tombolAktif = event.currentTarget;
+    const kategori = tombolAktif.dataset.filter;
+
+    tombolFilter.forEach((item) => {
+      item.classList.remove("is-active");
+    });
+
+    tombolAktif.classList.add("is-active");
+
+    renderProduk(kategori);
+  });
+});
 }
 
 document.addEventListener("DOMContentLoaded", renderProduk);
